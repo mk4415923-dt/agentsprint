@@ -1,0 +1,1 @@
+V3.1 Popup fix: replaced browser-native confirm and prompt dialogs with in-page confirmations. Preserve any existing state/aegis.db and data/inbox files when updating. Restart RUN.bat and use Ctrl+Shift+R.

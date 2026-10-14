@@ -1,0 +1,15 @@
+[
+  {
+    "email_id": "E000",
+    "category": "fee",
+    "priority": "medium",
+    "escalate": false,
+    "escalation_reason": "",
+    "policy_refs": [
+      "FEE-1"
+    ],
+    "reply_draft": "Dear Student, ... (short, polite, grounded in policy)",
+    "confidence": 0.85,
+    "agent_notes": "Why the agent chose this category and reply, in one or two lines."
+  }
+]
