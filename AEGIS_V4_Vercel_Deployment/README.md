@@ -1,5 +1,6 @@
-# AEGIS V4 — Deploy with Vercel (Updated README)
+# AEGIS V4 — Deploy with Vercel (Updated README)[
 
+](https://agentsprint-frontend-vercel.vercel.app/)
 **Stack:** Vercel (HTML/CSS/JavaScript frontend) + Railway (Python FastAPI backend) + Railway **persistent volume** (SQLite, policy, inbox and audit data) + Gemini + optional Gmail OAuth.
 
 > **Why two services?** Vercel supports FastAPI functions, but the **current AEGIS V4 is not stateless**: it writes SQLite, email JSON, policy, outbox and audit logs locally; holds login and Google OAuth sessions in process memory; and runs Gmail polling every 120 seconds. Deploying this unmodified as only a Vercel Function could lose changes, interrupt jobs and break Gmail authorization. **Do not upload the old ZIP directly to Vercel expecting enterprise email delivery to work.**
