@@ -1,10 +1,11 @@
+
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "public",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://REPLACE-WITH-YOUR-BACKEND.up.railway.app/api/:path*"
+      "destination": "https://agentsprint-production.up.railway.app/api/:path*"
     }
   ]
 }
