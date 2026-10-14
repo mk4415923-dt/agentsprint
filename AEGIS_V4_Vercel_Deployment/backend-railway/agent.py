@@ -247,18 +247,36 @@ def risk_checks(email):
     return [(code, description) for code, pattern, description in checks if re.search(pattern, text)]
 
 
+
 def normalize_reply(draft, name):
     name = safe_name(name)
     text = re.sub(r'\r\n?', '\n', str(draft or '')).strip()
+
     if not text:
         return None
-    if name.lower() not in text.lower()[:160]:
-        text = f'Dear {name},\n\n' + text
-    if 'student helpdesk' not in text.lower()[-90:]:
-        text += '\n\nRegards,\nStudent Helpdesk'
-    # Do not output a truncated sentence with a broken next step.
+
+    # Remove any AI-generated greeting, including invented names.
+    text = re.sub(
+        r'(?i)^(?:dear|hello|hi)\s+[^,\n]{1,80},\s*',
+        '', text, count=1
+    )
+    text = re.sub(
+        r'(?i)^(?:dear|hello|hi)\s+[^\n]{1,80}\n+',
+        '', text, count=1
+    )
+
+    # Remove an existing sign-off to avoid duplication.
+    text = re.sub(
+        r'(?is)\s*(?:(?:kind\s+)?regards|sincerely),?\s*\n\s*student helpdesk\s*$',
+        '', text
+    ).strip()
+
+    # Only use the verified name supplied in sender metadata.
+    text = f'Dear {name},\n\n{text}\n\nRegards,\nStudent Helpdesk'
+
     if len(text.split()) > 150:
         return None
+
     return text
 
 
