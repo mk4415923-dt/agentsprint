@@ -236,9 +236,14 @@ def risk_checks(email):
                   r'keeps? following me|threaten(?:s|ed|ing)? me|'
                   r'scared to come to campus',
          'Potential harassment or threat requires Harassment Committee review'),
-        ('ESC-3', r'faint(?:ed|ing)?|unconscious|not responding properly|not breathing|'
-                  r'cannot (?:go on|cope) anymore|want to (?:die|end my life)|'
-                  r'suicid(?:e|al)|hopeless(?:ness)?',
+        ('ESC-3',
+         r'faint(?:ed|ing)?|unconscious|not responding properly|'
+         r'not breathing|cannot (?:go on|cope) anymore|'
+         r'want to (?:die|end my life)|'
+         r'suicid(?:e|al)|hopeless(?:ness)?|'
+         r'extreme(?:ly)? stress(?:ed)?|'
+         r'a lot of anxiety|severe anxiety|panic attacks?',
+         'Possible medical or wellbeing concern requires human review'),
          'Possible medical or wellbeing emergency requires immediate human help'),
         ('ESC-4', r'\b(?:my lawyer|our lawyer|legal action|take .*? to the media|'
                   r'go to the press|sue (?:the )?university)\b',
